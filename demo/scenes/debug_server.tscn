@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://qxjkhmvlkxgg"]
+
+[ext_resource type="PackedScene" uid="uid://cs5i3r3pab7tx" path="res://scenes/user.tscn" id="1_uix7e"]
+[ext_resource type="PackedScene" uid="uid://dtvvhlqgebr5e" path="res://scenes/map.tscn" id="2_yqanf"]
+
+[node name="debug_server" type="Server"]
+user_scene = ExtResource("1_uix7e")
+map_scene = ExtResource("2_yqanf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.762036, -0.316232, 0.565065, 1.49012e-08, 0.872641, 0.488363, -0.647535, -0.37215, 0.664984, 4.39079, 7.6067, 8.75074)

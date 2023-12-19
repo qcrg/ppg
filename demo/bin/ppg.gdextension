@@ -1,0 +1,7 @@
+[configuration]
+entry_symbol = "init_ppg_library"
+compatibility_minimum = "4.1"
+
+[libraries]
+linux.x86_64 = "res://bin/libppg.so"
+windows.x86_64 = "res://bin/libppg.dll"

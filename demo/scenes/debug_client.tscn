@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2imtp6l6v72c"]
+
+[ext_resource type="PackedScene" uid="uid://bqmgbaxyh1cnb" path="res://scenes/player.tscn" id="1_4kpfj"]
+[ext_resource type="PackedScene" uid="uid://cs5i3r3pab7tx" path="res://scenes/user.tscn" id="2_7adu1"]
+[ext_resource type="PackedScene" uid="uid://dtvvhlqgebr5e" path="res://scenes/map.tscn" id="3_edxve"]
+
+[node name="debug_client" type="Client"]
+player_scene = ExtResource("1_4kpfj")
+enemy_scene = ExtResource("2_7adu1")
+
+[node name="map" parent="." instance=ExtResource("3_edxve")]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs5i3r3pab7tx"]
+
+[ext_resource type="PackedScene" uid="uid://byexxkyi03u5g" path="res://GodotQuickPrimitives-7ac2b61cfaf1f80966273e18a7eb165beb4f349d/addons/quick_primitives/scenes/Cube.tscn" id="1_nxkm6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3lrf5"]
+
+[node name="User" type="User"]
+velocity = Vector3(0, -29.4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.3938, 0, 0, 0, 0.5, 0, 0, 0, 1.43839, 0, 0, 0)
+shape = SubResource("CylinderShape3D_3lrf5")
+
+[node name="Cube" parent="." instance=ExtResource("1_nxkm6")]
+
+[node name="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+disabled = true
+
+[editable path="Cube"]

@@ -1,0 +1,12 @@
+res://scenes/0.tscn
+res://models/mesh_library.tres
+res://scenes/3d.tscn
+res://GodotQuickPrimitives-7ac2b61cfaf1f80966273e18a7eb165beb4f349d/addons/quick_primitives/scenes/Cube.tscn
+res://GodotQuickPrimitives-7ac2b61cfaf1f80966273e18a7eb165beb4f349d/addons/quick_primitives/scenes/Capsule.tscn
+res://GodotQuickPrimitives-7ac2b61cfaf1f80966273e18a7eb165beb4f349d/addons/quick_primitives/scenes/Cone.tscn
+res://GodotQuickPrimitives-7ac2b61cfaf1f80966273e18a7eb165beb4f349d/addons/quick_primitives/scenes/Cylinder.tscn
+res://scenes/user.tscn
+res://scenes/debug_server.tscn
+res://scenes/debug_client.tscn
+res://scenes/player.tscn
+res://scripts/player_enet.gd
