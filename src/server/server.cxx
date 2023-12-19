@@ -7,6 +7,7 @@
 
 #include <godot_cpp/godot.hpp>
 #include <godot_cpp/classes/engine.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
 #include <boost/current_function.hpp>
 #include <format>
 
@@ -67,9 +68,16 @@ namespace pnd::server
 		}
 
 		set_physics_process(true);
+		get_tree()->connect("physics_frame",
+				godot::Callable(this, "process"));
 	}
 
 	void Server::_physics_process(double)
+	{
+		// process();
+	}
+
+	void Server::process()
 	{
 		process_enet();
 
@@ -261,5 +269,7 @@ namespace pnd::server
 		
 		REG_PROP_HINT(Server, map_scene, Variant::OBJECT,
 				PROPERTY_HINT_RESOURCE_TYPE, "PackedScene");
+		
+		godot::ClassDB::bind_method(D_METHOD("process"), &Server::process);
 	}
 } // namespace pnd::server

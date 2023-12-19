@@ -6,6 +6,7 @@
 #include "print_utils.hxx"
 
 #include <godot_cpp/classes/engine.hpp>
+#include <godot_cpp/variant/transform3d.hpp>
 #include <algorithm>
 #include <cmath>
 #include <limits>
@@ -70,10 +71,24 @@ namespace pnd
 
 	void User::process_move(double delta, Vector3 &new_vel)
 	{
+		using bf = ButtonFlags;
 		double speed = has_button_flag(get_dyn_info()->get_button_flags(),
 				ButtonFlags::SPRINT) ? constants::sprint_speed : constants::speed;
-		new_vel.x = get_dyn_info()->get_velocity().x * speed * delta;
-		new_vel.z = get_dyn_info()->get_velocity().z * speed * delta;
+		// new_vel.x = get_dyn_info()->get_velocity().x * speed * delta;
+		// new_vel.z = get_dyn_info()->get_velocity().z * speed * delta;
+		float t_axis = get_axis(get_dyn_info()->get_button_flags(),
+				bf::FRONT, bf::BACK);
+		float l_axis = get_axis(get_dyn_info()->get_button_flags(),
+				bf::LEFT, bf::RIGHT);
+		Vector3 vel(l_axis * speed * delta,
+			0,
+			t_axis * speed * delta
+		);
+		Transform3D trans;
+		trans.rotate(Vector3(0, 1, 0), get_dyn_info()->get_camera_dir().y);
+		vel = trans.xform(vel);
+		new_vel.x = vel.x;
+		new_vel.z = vel.z;
 	}
 
 	void User::set_nickname(const godot::String &name)

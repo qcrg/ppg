@@ -43,6 +43,8 @@ func set_button_flags():
 		flags |= LEFT
 	if (Input.is_action_pressed("move_right")):
 		flags |= RIGHT
+	if (Input.is_action_pressed("sprint")):
+		flags |= SPRINT
 	get_dyn_info().button_flags = flags
 
 func set_vel():
@@ -54,7 +56,11 @@ func set_vel():
 	get_dyn_info().velocity = vel
 	pass
 
-func _physics_process(delta):
+#func _physics_process(_delta):
+	#pass
+	
+func _physics_process(_delta):
+#func _process(_delta):
 	set_button_flags()
 	set_vel()
 	pass

@@ -1,12 +1,27 @@
 cmake_minimum_required(VERSION 3.7)
 project(ppg)
 
+### BUILD_TYPE
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
+  set(CMAKE_BUILD_TYPE "Debug")
+endif ()
+string(TOLOWER ${CMAKE_BUILD_TYPE} BUILD_TYPE)
+
+### BUILD_PLATFORM
+if (WIN32)
+  set(BUILD_PLATFORM windows)
+else ()
+  set(BUILD_PLATFORM linux)
+endif ()
+
 set(PKG_NAMES libenet)
 set(CXXFLAGS -Wall -Wextra -Wpedantic -ggdb)
 set(BOOST_PKGS )
 
 file(GLOB_RECURSE SRC_LIST src/*.cxx)
 file(GLOB_RECURSE MDLS_LIST src/*.cxxm)
+
+add_subdirectory(godot-cpp)
 
 if (DEFINED PKG_NAMES)
   find_package(PkgConfig REQUIRED)
@@ -34,8 +49,8 @@ list(APPEND LIBS_LIST ${CAPNP_LIBRARIES})
 
 ### godot
 list(APPEND LIBS_LIST
-    ${CMAKE_SOURCE_DIR}/godot-cpp/build/bin/libgodot-cpp.linux.release.64.a)   
-include_directories(godot-cpp/build/gen/include)
+    ${CMAKE_BINARY_DIR}/godot-cpp/bin/libgodot-cpp.${BUILD_PLATFORM}.${BUILD_TYPE}.64.a)   
+include_directories(${CMAKE_BINARY_DIR}/godot-cpp/gen/include)
 include_directories(godot-cpp/include)
 include_directories(godot-cpp/gdextension)
 

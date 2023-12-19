@@ -22,6 +22,7 @@ namespace pnd::server
 		virtual void _ready() override;
 		virtual void _exit_tree() override;
 		virtual void _physics_process(double delta) override;
+		void process();
 
 		void set_port(int port);
 		void set_incoming_ip(const godot::String &ip);
